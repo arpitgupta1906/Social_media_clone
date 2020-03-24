@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  
+    <title>Star Social</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'socialclone/css/master.css' %}">
+
+  </head>
+  <body>
+
+    <nav class='navbar mynav' role='navigation' id='navbar'>
+      <div class="container">
+        <a class="navbar-brand mynav" href="{% url 'home' %}">Star Social</a>
+
+        <ul class='nav navbar-nav navbar-right'>
+          {% if user.is_authenticated %}
+          <li> <a href="#">Post</a> </li>
+          <li> <a href="#">Groups</a> </li>
+          <li> <a href="#">Create Group</a> </li>
+          <li> <a href="{% url 'accounts:logout' %}">Logout</a> </li>
+          {% else %}
+          <li> <a href="#">Groups</a> </li>
+          <li> <a href="{%url 'accounts:login' %}"><span class="glyphicon glyphicon-user"></span>Login</a> </li>
+          <li> <a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"></span>Sign Up</a> </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+<div class="container mycontent">
+
+  {% block content %}
+
+  {% endblock %}
+</div>
+  </body>
+</html>
