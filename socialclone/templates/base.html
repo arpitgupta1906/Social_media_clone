@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-  
+
     <title>Star Social</title>
 
     <!-- Latest compiled and minified CSS -->
@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="{% static 'socialclone/css/master.css' %}">
-
+{% comment %} <link rel="stylesheet" href="{% static 'css/master.css'%}"> {% endcomment %}
   </head>
   <body>
 
@@ -24,12 +24,12 @@
 
         <ul class='nav navbar-nav navbar-right'>
           {% if user.is_authenticated %}
-          <li> <a href="#">Post</a> </li>
-          <li> <a href="#">Groups</a> </li>
-          <li> <a href="#">Create Group</a> </li>
+          <li> <a href="{% url 'posts:create' %}">Post</a> </li>
+          <li> <a href="{% url 'groups:all' %}">Groups</a> </li>
+          <li> <a href="{% url 'groups:create' %}">Create Group</a> </li>
           <li> <a href="{% url 'accounts:logout' %}">Logout</a> </li>
           {% else %}
-          <li> <a href="#">Groups</a> </li>
+          <li> <a href="{% url 'groups:all' %}">Groups</a> </li>
           <li> <a href="{%url 'accounts:login' %}"><span class="glyphicon glyphicon-user"></span>Login</a> </li>
           <li> <a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"></span>Sign Up</a> </li>
           {% endif %}
@@ -42,5 +42,10 @@
 
   {% endblock %}
 </div>
+<canvas id="canvas"></canvas>
   </body>
+  <script type="text/javascript" src="{% static 'socialclone/js/master.js' %}">
+  </script>
+  <script type="text/javascript" src="socialclone/static/socialclone/js/master.js">
+  </script>
 </html>

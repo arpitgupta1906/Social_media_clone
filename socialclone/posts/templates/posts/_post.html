@@ -4,6 +4,7 @@
 		<strong>{{ post.user.username }}</strong>
 		<h5 class="media-heading">
 			<span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>
+			<br><br>
 			<time class="time"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.created_at }}</a></time>
 			{% if post.group %}
 			<span class="group-name">in <a href="#">{{ post.group.name }}</a></span>
